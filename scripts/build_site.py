@@ -21,6 +21,7 @@ PRIMARY = "#7fee64"
 BG = "#0d180a"
 
 CATEGORY_ORDER = ["process", "equipment", "materials", "metrology", "yield-economics"]
+RESERVED_TOP_LEVEL = {"readme", "contributors", "license"}
 
 
 @dataclass
@@ -49,14 +50,29 @@ def read_page(path: Path, slug: str) -> Page:
     return Page(title=title, slug=slug, source=path, body_md=body)
 
 
+def discover_category_stems() -> list[str]:
+    """Return top-level glossary sections.
+
+    Editors only need to add Markdown files. Existing sections are ordered by
+    CATEGORY_ORDER; any new top-level section file is picked up automatically
+    and appended alphabetically.
+    """
+    stems = {
+        path.stem
+        for path in CONTENT.glob("*.md")
+        if path.stem.lower() not in RESERVED_TOP_LEVEL
+    }
+    ordered = [stem for stem in CATEGORY_ORDER if stem in stems]
+    ordered.extend(sorted(stems - set(ordered)))
+    return ordered
+
+
 def build_tree() -> Page:
     home = read_page(CONTENT / "readme.md", "")
 
     categories: list[Page] = []
-    for stem in CATEGORY_ORDER:
+    for stem in discover_category_stems():
         path = CONTENT / f"{stem}.md"
-        if not path.exists():
-            continue
         category = read_page(path, stem)
         child_dir = CONTENT / stem
         if child_dir.exists():

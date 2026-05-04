@@ -16,3 +16,36 @@ See [`fab-glossary/LICENSE`](fab-glossary/LICENSE) for details.
 The remainder of the files in this repository are licensed under the
 [MIT License](https://opensource.org/license/mit).
 See [`LICENSE`](LICENSE) for details.
+
+## Editing the Glossary
+
+The site is designed so contributors can focus on Markdown.
+
+- Edit homepage copy in `fab-glossary/readme.md`.
+- Edit a section landing page, e.g. `fab-glossary/process.md`.
+- Add a new term by creating a Markdown file inside a section, e.g. `fab-glossary/process/etch.md`.
+- Add a new section by creating both a top-level file and directory, e.g. `fab-glossary/packaging.md` and `fab-glossary/packaging/hybrid-bonding.md`.
+
+Each Markdown file should start with frontmatter:
+
+```md
+---
+title: What is Etch?
+---
+
+Your glossary entry here.
+```
+
+When changes are pushed to `main`, GitHub Actions rebuilds and publishes the site to GitHub Pages automatically:
+
+https://manuelarceaguirre.github.io/fab-glossary/
+
+For local preview:
+
+```bash
+pip install -r requirements.txt
+python scripts/build_site.py
+python -m http.server 8000 -d docs
+```
+
+Then open `http://localhost:8000/fab-glossary/`.
