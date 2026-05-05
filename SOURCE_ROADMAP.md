@@ -13,7 +13,9 @@ This file tracks where to find authoritative answers for each glossary topic. Th
 Transcript: `.pi-sherlock/sherlock-20260505-145141.md`
 
 1. U.S. DOE, **Semiconductor Supply Chain Deep Dive Assessment**  
-   https://www.energy.gov/sites/default/files/2024-12/Semiconductor%2520Supply%2520Chain%2520Report%2520-%2520Final%5B1%5D.pdf
+   Local copy: `sources/Semiconductor%20Supply%20Chain%20Report%20-%20Final[1].pdf`  
+   URL: https://www.energy.gov/sites/default/files/2024-12/Semiconductor%2520Supply%2520Chain%2520Report%2520-%2520Final%5B1%5D.pdf  
+   **Scope note:** this is not a general foundry primer. It is an energy-sector semiconductor supply-chain report with a strong focus on conventional semiconductors plus wide bandgap (WBG) power electronics, especially SiC and GaN for EVs, charging, renewables, grid/HVDC, industrial power, and power modules.
 2. CSET Georgetown, **AI Chips: What They Are and Why They Matter**  
    https://cset.georgetown.edu/wp-content/uploads/AI-Chips%E2%80%94What-They-Are-and-Why-They-Matter-1.pdf
 3. OSTI-hosted semiconductor supply-chain / AI hardware source  
