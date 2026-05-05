@@ -1,0 +1,7 @@
+---
+title: Cycle Time
+---
+
+Placeholder definition for **Cycle Time**.
+
+Add a concise definition, context for foundry analysis, related terms, and source notes here.

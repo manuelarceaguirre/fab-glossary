@@ -20,7 +20,14 @@ REPO_URL = "https://github.com/manuelarceaguirre/fab-glossary"
 PRIMARY = "#7fee64"
 BG = "#0d180a"
 
-CATEGORY_ORDER = ["process", "equipment", "materials", "metrology", "yield-economics"]
+CATEGORY_ORDER = [
+    "market-structure",
+    "fab-system",
+    "process-stack",
+    "operating-model",
+    "metrics",
+    "models",
+]
 RESERVED_TOP_LEVEL = {"readme", "contributors", "license"}
 
 
@@ -138,8 +145,8 @@ def page_template(page: Page, tree: Page, pages: list[Page], body: str) -> str:
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{html.escape(page.title)} | Fab Glossary</title>
-  <meta name="description" content="A semiconductor fab glossary inspired by Modal's GPU Glossary." />
+  <title>{html.escape(page.title)} | Foundry Stack</title>
+  <meta name="description" content="A glossary for understanding semiconductor foundries as businesses and manufacturing systems." />
   <link rel="stylesheet" href="{BASE_PATH}assets/site.css" />
 </head>
 <body>
@@ -147,7 +154,7 @@ def page_template(page: Page, tree: Page, pages: list[Page], body: str) -> str:
     <aside class="sidebar">
       <a class="brand" href="{BASE_PATH}" aria-label="Fab Glossary home">
         <span class="brand-mark">FAB</span>
-        <span>Glossary</span>
+        <span>Foundry Stack</span>
       </a>
       <input id="search" class="search" type="search" placeholder="Search terms" />
       <nav id="nav" class="nav" aria-label="Table of contents">

@@ -3,24 +3,16 @@ title: README
 ---
 
 <pre class="text-xs md:text-base font-mono whitespace-pre">
-███████╗ █████╗ ██████╗ 
-██╔════╝██╔══██╗██╔══██╗
-█████╗  ███████║██████╔╝
-██╔══╝  ██╔══██║██╔══██╗
-██║     ██║  ██║██████╔╝
-╚═╝     ╚═╝  ╚═╝╚═════╝ 
- ██████╗ ██╗      ██████╗ ███████╗███████╗ █████╗ ██████╗ ██╗   ██╗
-██╔════╝ ██║     ██╔═══██╗██╔════╝██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝
-██║  ███╗██║     ██║   ██║███████╗███████╗███████║██████╔╝ ╚████╔╝ 
-██║   ██║██║     ██║   ██║╚════██║╚════██║██╔══██║██╔══██╗  ╚██╔╝  
-╚██████╔╝███████╗╚██████╔╝███████║███████║██║  ██║██║  ██║   ██║   
- ╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   
+███████╗ █████╗ ██████╗     ███████╗████████╗ █████╗  ██████╗██╗  ██╗
+██╔════╝██╔══██╗██╔══██╗    ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
+█████╗  ███████║██████╔╝    ███████╗   ██║   ███████║██║     █████╔╝ 
+██╔══╝  ██╔══██║██╔══██╗    ╚════██║   ██║   ██╔══██║██║     ██╔═██╗ 
+██║     ██║  ██║██████╔╝    ███████║   ██║   ██║  ██║╚██████╗██║  ██╗
+╚═╝     ╚═╝  ╚═╝╚═════╝     ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
 </pre>
 
-This glossary is an early attempt to map the language of semiconductor fabs: process nodes, modules, tools, materials, metrology, yield, capacity, and the manufacturing stack that turns wafers into chips.
+Foundry Stack is a glossary for understanding semiconductor foundries as businesses and manufacturing systems.
 
-The format is inspired by Modal's excellent [GPU Glossary](https://github.com/modal-labs/gpu-glossary). This project aims to build a similarly interlinked, readable glossary for fabs.
+It covers the market structure, fab system, process stack, operating model, financial metrics, and modeling concepts used to analyze foundries.
 
-The intended structure is hypertext rather than a static PDF: pages should link to related concepts so readers can move between process steps, equipment types, materials, yield metrics, and fab economics.
-
-You can read it linearly or use the table of contents once the glossary is published.
+This project is inspired by Modal's excellent [GPU Glossary](https://github.com/modal-labs/gpu-glossary), including its interlinked glossary format.

@@ -1,8 +1,10 @@
-# Fab Glossary
+# Foundry Stack
 
-This repository contains the source content for `fab-glossary`, a dictionary of terms related to semiconductor fabrication, fabs, process technology, fab equipment, materials, metrology, yield, and the manufacturing stack.
+This repository contains the source content and static-site generator for Foundry Stack, a glossary for understanding semiconductor foundries as businesses and manufacturing systems.
 
-The project is intentionally inspired by Modal's excellent [GPU Glossary](https://github.com/modal-labs/gpu-glossary). The goal is to build a similar hyperlinked glossary format, but focused on semiconductor fabs instead of GPUs.
+The project is intentionally inspired by Modal's excellent [GPU Glossary](https://github.com/modal-labs/gpu-glossary). The goal is to build a similar hyperlinked glossary format, but focused on the foundry stack: market structure, fab systems, process technology, operating models, metrics, and analytical models.
+
+Live site: https://manuelarceaguirre.github.io/fab-glossary/
 
 ## Licenses
 
@@ -22,23 +24,21 @@ See [`LICENSE`](LICENSE) for details.
 The site is designed so contributors can focus on Markdown.
 
 - Edit homepage copy in `fab-glossary/readme.md`.
-- Edit a section landing page, e.g. `fab-glossary/process.md`.
-- Add a new term by creating a Markdown file inside a section, e.g. `fab-glossary/process/etch.md`.
-- Add a new section by creating both a top-level file and directory, e.g. `fab-glossary/packaging.md` and `fab-glossary/packaging/hybrid-bonding.md`.
+- Edit a section landing page, e.g. `fab-glossary/market-structure.md`.
+- Add a new term by creating a Markdown file inside a section, e.g. `fab-glossary/fab-system/euv-scanner.md`.
+- Add a new section by creating both a top-level file and directory, e.g. `fab-glossary/advanced-packaging.md` and `fab-glossary/advanced-packaging/hybrid-bonding.md`.
 
 Each Markdown file should start with frontmatter:
 
 ```md
 ---
-title: What is Etch?
+title: EUV Scanner
 ---
 
 Your glossary entry here.
 ```
 
-When changes are pushed to `main`, GitHub Actions rebuilds and publishes the site to GitHub Pages automatically:
-
-https://manuelarceaguirre.github.io/fab-glossary/
+When changes are pushed to `main`, GitHub Actions rebuilds and publishes the site to GitHub Pages automatically.
 
 For local preview:
 
