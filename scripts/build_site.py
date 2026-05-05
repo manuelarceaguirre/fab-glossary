@@ -99,15 +99,17 @@ def categories(tree: Page) -> list[Page]:
     return [child for child in tree.children if child.children]
 
 
-def top_nav_html(tree: Page, active_slug: str) -> str:
-    items = [f'<li><a class="{active_slug == "" and "active" or ""}" href="{BASE_PATH}">Introduction</a></li>']
-    for category in categories(tree):
-        active = active_slug == category.slug or active_slug.startswith(f"{category.slug}/")
-        items.append(
-            f'<li><a class="{active and "active" or ""}" href="{category.url}">{html.escape(category.title)}</a></li>'
-        )
-    items.append(f'<li><a class="{active_slug == "contributors" and "active" or ""}" href="{BASE_PATH}contributors/">About</a></li>')
-    return "\n".join(items)
+def side_toc_html(page: Page, active_slug: str, depth: int = 0) -> str:
+    active = active_slug == page.slug
+    label = "Introduction" if page.slug == "" else html.escape(page.title)
+    out = [
+        f'<div class="toc-row depth-{depth} {active and "active" or ""}">'
+        f'<a href="{page.url}">{label}</a>'
+        f"</div>"
+    ]
+    for child in page.children:
+        out.append(side_toc_html(child, active_slug, depth + 1))
+    return "\n".join(out)
 
 
 def section_index_html(page: Page) -> str:
@@ -181,32 +183,36 @@ def page_template(page: Page, tree: Page, pages: list[Page], body: str) -> str:
     <div class="inner">
       <a class="site-title" href="{BASE_PATH}">Foundry Stack</a>
       <div class="site-description">The Foundry Business and Fab Operations Glossary</div>
-      <nav class="main-navigation" aria-label="Main navigation">
-        <ul>
-          {top_nav_html(tree, page.slug)}
-        </ul>
-      </nav>
     </div>
   </header>
 
-  <main id="content" class="content-wrapper">
-    <article class="entry">
-      <header class="entry-header">
-        <div class="path-label">{html.escape(path_label)}</div>
-        <h1 class="entry-title">{html.escape(page.title)}</h1>
-      </header>
-      <div class="entry-content">
-        {body}
-      </div>
-      <footer class="entry-footer">
-        <nav class="pager" aria-label="Previous and next pages">
-          {prev_html}
-          {next_html}
-        </nav>
-        <a class="suggest-edit" href="{REPO_URL}/issues/new" target="_blank" rel="noreferrer">Suggest an edit on GitHub</a>
-      </footer>
-    </article>
-  </main>
+  <div class="page-layout">
+    <aside class="side-toc" aria-label="Table of contents">
+      <div class="toc-heading">Table of Contents</div>
+      <nav>
+        {side_toc_html(tree, page.slug)}
+      </nav>
+    </aside>
+
+    <main id="content" class="content-wrapper">
+      <article class="entry">
+        <header class="entry-header">
+          <div class="path-label">{html.escape(path_label)}</div>
+          <h1 class="entry-title">{html.escape(page.title)}</h1>
+        </header>
+        <div class="entry-content">
+          {body}
+        </div>
+        <footer class="entry-footer">
+          <nav class="pager" aria-label="Previous and next pages">
+            {prev_html}
+            {next_html}
+          </nav>
+          <a class="suggest-edit" href="{REPO_URL}/issues/new" target="_blank" rel="noreferrer">Suggest an edit on GitHub</a>
+        </footer>
+      </article>
+    </main>
+  </div>
   <script src="{BASE_PATH}assets/site.js"></script>
 </body>
 </html>
@@ -277,13 +283,19 @@ a:hover { color: var(--link-hover); }
   line-height: .9;
   margin-top: .3rem;
 }
-.main-navigation { max-width: 1100px; margin-top: 2.2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.main-navigation ul { list-style: none; margin: 0; padding: .65rem 0; display: flex; flex-wrap: wrap; gap: .2rem 1.1rem; }
-.main-navigation li { margin: 0; }
-.main-navigation a { color: var(--heading); font-size: 1.05rem; text-decoration: none; display: inline-block; }
-.main-navigation a:hover, .main-navigation a.active { color: var(--link-hover); text-decoration: underline; }
-.content-wrapper { padding: 2.6rem .75rem 4rem; }
-.entry { max-width: 760px; margin: 0 auto; }
+.page-layout { display: grid; grid-template-columns: minmax(230px, 310px) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); max-width: 1180px; margin: 0 auto; padding: 1.4rem .75rem 4rem; align-items: start; }
+.side-toc { position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; border-right: 1px solid var(--border); padding: .35rem 1.1rem 1rem 0; font-size: 1rem; line-height: 1.25; }
+.toc-heading { color: var(--muted); font-size: .95rem; margin-bottom: .65rem; text-transform: uppercase; letter-spacing: .03em; }
+.toc-row { margin: .12rem 0; }
+.toc-row a { display: block; color: var(--heading); text-decoration: none; padding: .18rem .25rem; border-left: 2px solid transparent; }
+.toc-row a:hover, .toc-row.active a { color: var(--link-hover); text-decoration: underline; }
+.toc-row.active a { border-left-color: var(--heading); }
+.toc-row.depth-1 { padding-left: .7rem; margin-top: .45rem; }
+.toc-row.depth-1 a { font-size: 1.02rem; }
+.toc-row.depth-2 { padding-left: 1.45rem; }
+.toc-row.depth-2 a { color: var(--muted); font-size: .93rem; }
+.content-wrapper { padding: 0 0 0; min-width: 0; }
+.entry { max-width: 760px; margin: 0; }
 .entry-header { margin-bottom: 1.2rem; }
 .path-label { color: var(--muted); font-size: 1.05rem; margin-bottom: .3rem; }
 .entry-title {
@@ -323,8 +335,8 @@ a:hover { color: var(--link-hover); }
 @media (max-width: 760px) {
   body { font-size: 20px; }
   .site-header { padding-top: 2rem; }
-  .main-navigation ul { display: block; }
-  .main-navigation li { margin: .25rem 0; }
+  .page-layout { display: block; padding-top: .5rem; }
+  .side-toc { position: static; max-height: 42vh; border-right: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: .8rem 0; margin-bottom: 2rem; }
   .section-grid { grid-template-columns: 1fr; }
   .section-card ul, .term-list { columns: 1; }
   .pager { display: block; }

@@ -2,15 +2,6 @@
 title: README
 ---
 
-<pre class="text-xs md:text-base font-mono whitespace-pre">
-███████╗ █████╗ ██████╗     ███████╗████████╗ █████╗  ██████╗██╗  ██╗
-██╔════╝██╔══██╗██╔══██╗    ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
-█████╗  ███████║██████╔╝    ███████╗   ██║   ███████║██║     █████╔╝ 
-██╔══╝  ██╔══██║██╔══██╗    ╚════██║   ██║   ██╔══██║██║     ██╔═██╗ 
-██║     ██║  ██║██████╔╝    ███████║   ██║   ██║  ██║╚██████╗██║  ██╗
-╚═╝     ╚═╝  ╚═╝╚═════╝     ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
-</pre>
-
 Foundry Stack is a glossary for understanding semiconductor foundries as businesses and manufacturing systems.
 
 It covers the market structure, fab system, process stack, operating model, financial metrics, and modeling concepts used to analyze foundries.
