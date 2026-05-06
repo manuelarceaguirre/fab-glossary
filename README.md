@@ -2,7 +2,7 @@
 
 This repository contains the source content and static-site generator for Foundry Stack, a glossary for understanding semiconductor foundries as businesses and manufacturing systems.
 
-The project is intentionally inspired by Modal's excellent [GPU Glossary](https://github.com/modal-labs/gpu-glossary). The goal is to build a similar hyperlinked glossary format, but focused on the foundry stack: market structure, fab systems, process technology, operating models, metrics, and analytical models.
+The project is intentionally inspired by Modal's excellent [GPU Glossary](https://github.com/modal-labs/gpu-glossary). The goal is to build a similar hyperlinked glossary format, but focused on the semiconductor manufacturing value chain: industry map, materials and wafers, front-end wafer fabrication, mid-end/advanced packaging, back-end/OSAT, fab operations, and economics/models.
 
 Live site: https://manuelarceaguirre.github.io/fab-glossary/
 
@@ -24,8 +24,8 @@ See [`LICENSE`](LICENSE) for details.
 The site is designed so contributors can focus on Markdown.
 
 - Edit homepage copy in `fab-glossary/readme.md`.
-- Edit a section landing page, e.g. `fab-glossary/market-structure.md`.
-- Add a new term by creating a Markdown file inside a section, e.g. `fab-glossary/fab-system/euv-scanner.md`.
+- Edit a section landing page, e.g. `fab-glossary/front-end.md`.
+- Add a new term by creating a Markdown file inside a section, e.g. `fab-glossary/front-end/euv-scanner.md`.
 - Add a new section by creating both a top-level file and directory, e.g. `fab-glossary/advanced-packaging.md` and `fab-glossary/advanced-packaging/hybrid-bonding.md`.
 
 Each Markdown file should start with frontmatter:

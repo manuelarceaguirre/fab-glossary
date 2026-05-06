@@ -19,12 +19,13 @@ BASE_PATH = "/fab-glossary/"
 REPO_URL = "https://github.com/manuelarceaguirre/fab-glossary"
 
 CATEGORY_ORDER = [
-    "market-structure",
-    "fab-system",
-    "process-stack",
-    "operating-model",
-    "metrics",
-    "models",
+    "industry-map",
+    "materials-and-wafers",
+    "front-end",
+    "mid-end-advanced-packaging",
+    "back-end-osat",
+    "fab-operations",
+    "economics-and-models",
 ]
 RESERVED_TOP_LEVEL = {"readme", "contributors", "license"}
 
