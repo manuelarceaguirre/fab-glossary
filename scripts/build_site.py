@@ -172,9 +172,6 @@ def page_template(page: Page, tree: Page, pages: list[Page], body: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{html.escape(page.title)} | Foundry Stack</title>
   <meta name="description" content="A glossary for understanding semiconductor foundries as businesses and manufacturing systems." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Benne&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{BASE_PATH}assets/site.css" />
 </head>
 <body>
@@ -260,11 +257,13 @@ CSS = r'''
   --sidebar: #fafafa;
   --link: #2f56d9;
   --link-hover: #e67814;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; min-height: 100%; background: var(--paper); color: var(--ink); }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font);
   font-size: 17px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -292,7 +291,7 @@ a:hover { color: var(--link-hover); }
 .site-title {
   display: block;
   color: var(--ink);
-  font-family: Benne, Georgia, 'Times New Roman', serif;
+  font-family: var(--font);
   font-size: 2.05rem;
   line-height: .9;
   letter-spacing: -0.035em;
@@ -309,13 +308,13 @@ a:hover { color: var(--link-hover); }
   border-radius: 4px;
   padding: .55rem .65rem;
   margin: .2rem 0 1.15rem;
-  font: .85rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font: .85rem var(--mono);
   outline: none;
 }
 .search:focus { border-color: var(--bb-blue); box-shadow: 0 0 0 3px var(--bb-blue-soft); }
 .toc-heading {
   color: var(--muted);
-  font: .72rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font: .72rem var(--mono);
   text-transform: uppercase;
   letter-spacing: .08em;
   margin: .25rem 0 .65rem;
@@ -344,7 +343,7 @@ a:hover { color: var(--link-hover); }
 .entry { max-width: 760px; }
 .entry-header { margin-bottom: 2rem; }
 .topline { display: flex; justify-content: space-between; gap: 1rem; align-items: center; margin-bottom: 1rem; }
-.path-label { color: var(--muted); font: .82rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.path-label { color: var(--muted); font: .82rem var(--mono); }
 .suggest-edit {
   color: var(--muted);
   border: 1px solid var(--line);
@@ -357,8 +356,8 @@ a:hover { color: var(--link-hover); }
 .suggest-edit:hover { color: var(--link-hover); border-color: var(--link-hover); text-decoration: none; }
 .entry-title {
   color: var(--ink);
-  font-family: Benne, Georgia, 'Times New Roman', serif;
-  font-size: clamp(3.4rem, 8vw, 6.4rem);
+  font-family: var(--font);
+  font-size: clamp(3.2rem, 7vw, 5.8rem);
   line-height: .82;
   letter-spacing: -0.055em;
   font-weight: 400;
@@ -374,12 +373,12 @@ a:hover { color: var(--link-hover); }
   color: var(--ink-soft);
   font-size: .84rem;
 }
-.byline span { display: block; color: var(--muted); font: .68rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-transform: uppercase; letter-spacing: .07em; margin-bottom: .15rem; }
+.byline span { display: block; color: var(--muted); font: .68rem var(--mono); text-transform: uppercase; letter-spacing: .07em; margin-bottom: .15rem; }
 .byline strong { font-weight: 500; color: var(--ink); }
-.entry-content { font-family: Georgia, 'Times New Roman', serif; font-size: 1.08rem; line-height: 1.72; }
+.entry-content { font-family: var(--font); font-size: 1.03rem; line-height: 1.68; }
 .entry-content p { margin: 0 0 1.15em; }
 .entry-content h2, .entry-content h3, .entry-content h4 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font);
   color: var(--ink);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -393,16 +392,16 @@ a:hover { color: var(--link-hover); }
 .entry-content figcaption, .caption { color: var(--ink-soft); font-size: .92rem; line-height: 1.45; }
 .entry-content hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .entry-content blockquote { border-left: 4px solid var(--bb-orange); margin: 1.5rem 0; padding: .1rem 0 .1rem 1rem; color: var(--ink-soft); background: var(--bb-orange-soft); }
-.entry-content code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .82em; background: #f4f6f8; padding: .1em .28em; color: var(--ink); }
+.entry-content code { font-family: var(--mono); font-size: .82em; background: #f4f6f8; padding: .1em .28em; color: var(--ink); }
 .entry-content pre { overflow-x: auto; background: #f8fafc; border: 1px solid var(--line-soft); border-radius: 6px; padding: 1rem; font-size: .85em; }
-.entry-content table { border-collapse: collapse; width: 100%; font-size: .92rem; margin: 1.4rem 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+.entry-content table { border-collapse: collapse; width: 100%; font-size: .92rem; margin: 1.4rem 0; font-family: var(--font); }
 .entry-content th, .entry-content td { border-bottom: 1px solid var(--line-soft); padding: .45em .55em; text-align: left; vertical-align: top; }
 .entry-content th { border-bottom-color: var(--line); color: var(--ink); }
-.section-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 1.6rem; margin-top: 2.3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+.section-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 1.6rem; margin-top: 2.3rem; font-family: var(--font); }
 .section-card { border-top: 1px solid var(--line); padding-top: .8rem; }
 .section-card h2 { margin: 0 0 .35rem; padding: 0; border: 0; font-size: 1.15rem; }
 .section-card ul, .term-list { columns: 2; column-gap: 2rem; font-size: .95rem; }
-.term-list { margin-top: .5rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+.term-list { margin-top: .5rem; font-family: var(--font); }
 .entry-footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1rem; font-size: .95rem; }
 .pager { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
 @media (min-width: 1180px) {
